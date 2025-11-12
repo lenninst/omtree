@@ -1,0 +1,10 @@
+input {
+  border: none; /* Sin borde */
+  background: none; /* Sin fondo */
+  outline: none; /* Sin contorno al hacer focus */
+  box-shadow: none; /* Sin sombras */
+  padding: 0;
+  margin: 0;
+  font: inherit; /* Usa la fuente del contenedor */
+  color: inherit; /* Usa el color del contenedor */
+}
