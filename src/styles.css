@@ -8,11 +8,25 @@
 :root {
   /* color */
   --color-bgbase: #1e2030;
+  --color-macsurface: #363a4f;
   --color-text: #cad3f5;
 
   /* text */
 }
+
+@theme {
+  --color-macsurface: #363a4f;
+}
+@font-face {
+  font-family: 'JetBrainsMonoNF';
+  src: url('assets/fonts/JetBrainsMonoNLNerdFont-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
+  font-family: 'JetBrainsMonoNF', monospace;
+  font-size: 14px;
   background-color: var(--color-bgbase);
   color: var(--color-text);
 }
