@@ -1,10 +1,15 @@
 
 <div class=" h-34 bg-macsurface rounded-sm p-2">
 
-  <div class="flex justify-start  ">
+  <div class="flex flex-col justify-start  ">
+    <div>
+      <pre>{{log}}</pre>
+    </div>
 
-  <span class="text-green-400"> </span>
-    <input type="text" name="" value="" placeholder="comando">
+  <span class="text-green-400">
+      <input class="bg-red-900 " autofocus (keydown.enter)="executeCommand()" [(ngModel)]="command" type="text" name="" value="" placeholder="comando">
+    </span>
+
   </div>
 
 </div>
