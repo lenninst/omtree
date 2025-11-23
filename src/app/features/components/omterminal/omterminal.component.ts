@@ -13,16 +13,6 @@ export class OmterminalComponent {
   command: string = '';
 
   executeCommand(): void {
-    // this.log += `\n ${this.command}`;
-    // if (this.command === 'help') {
-    //   this.log += '\n Available commands:youtube, github, spotify, help, clear';
-    // } else if (this.command === 'clear') {
-    //   this.log = '';
-    // } else {
-    //   this.log += `\n Command not found: ${this.command}`;
-    // }
-    // this.command = '';
-    //
     switch (this.command) {
       case 'youtube':
         this.youtubeScrapper();
@@ -31,20 +21,29 @@ export class OmterminalComponent {
         console.log('Navigating to GitHub...');
         break;
       case 'spotify':
-        console.log('Navigating to Spotify...');
+        this.youtubeScrapper();
         break;
       case 'help':
         this.log += '\n Available commands: youtube, github, spotify, help, clear';
         break;
       case 'clear':
-        this.log = '';
+        this.clearLog();
         break;
       default:
-        console.log(`Command not found: ${this.command}`);
+        this.logfailed();
         break;
     }
   }
 
+  logfailed(): void {
+    this.log += '\n Command not found';
+    this.command = '';
+  }
+
+  clearLog(): void {
+    this.log = '';
+    this.command = '';
+  }
   youtubeScrapper(): void {
     console.log('YouTube scrapper function called');
   }
