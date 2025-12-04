@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { YoutubeService } from '../../../services/service';
 
 @Component({
   selector: 'app-omterminal',
@@ -10,8 +11,27 @@ import { FormsModule } from '@angular/forms';
 export class OmterminalComponent {
   @ViewChild(`scrollContainer`) private scrollContainer!: ElementRef;
   log = 'Mi terminal';
-  command: string = '';
+  command: string = 'lenninst';
 
+  // usar api
+  items: any[] = [];
+
+  constructor(private youtubeService: YoutubeService) {}
+
+  ngOnInit() {
+    this.getYoutubeUser();
+  }
+
+  getYoutubeUser() {
+    this.youtubeService.searchChannel(this.command).subscribe({
+      next: (response) => {
+        this.items = response;
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+    });
+  }
   executeCommand(): void {
     switch (this.command) {
       case 'youtube':

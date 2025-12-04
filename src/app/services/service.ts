@@ -1,16 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Service {
-  private readonly apiUrl: string = 'https://api.example.com';
+export class YoutubeService {
+  private apiKey = environment.apiKey;
+  private apiUrl = 'https://www.googleapis.com/youtube/v3';
 
   constructor(private http: HttpClient) {}
 
-  getChannelData(username: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/channels/${username}`);
+  searchChannel(username: string): Observable<any> {
+    const url = `${this.apiUrl}/search?part=snippet&type=channel&q=${username}&key=${this.apiKey}`;
+    return this.http.get(url);
+  }
+
+  getChannelDetails(channelId: string): Observable<any> {
+    const url = `${this.apiUrl}/channels?part=snippet,statistics,contentDetails&id=${channelId}&key=${this.apiKey}`;
+    return this.http.get(url);
   }
 }
