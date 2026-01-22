@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { YoutubeService } from '../../../services/service';
+import { YouTubeItem, YouTubeResponse } from '../../../core/models/youtube.model';
 
 @Component({
   selector: 'app-omterminal',
@@ -14,18 +15,19 @@ export class OmterminalComponent {
   command: string = 'lenninst';
 
   // usar api
-  items: any[] = [];
+  items?: YouTubeItem[] = [];
 
   constructor(private youtubeService: YoutubeService) {}
 
   ngOnInit() {
-    this.getYoutubeUser();
+    this.getYoutubeUser(this.command);
   }
 
-  getYoutubeUser() {
-    this.youtubeService.searchChannel(this.command).subscribe({
+  getYoutubeUser(command: string) {
+    this.youtubeService.searchChannel(command).subscribe({
       next: (response) => {
-        this.items = response;
+        this.items = response.items;
+        console.log(this.items);
       },
       error: (error) => {
         console.error('There was an error!', error);
@@ -65,6 +67,7 @@ export class OmterminalComponent {
     this.command = '';
   }
   youtubeScrapper(): void {
+    this.getYoutubeUser(this.command);
     console.log('YouTube scrapper function called');
   }
   ngAterViewChecked(): void {
