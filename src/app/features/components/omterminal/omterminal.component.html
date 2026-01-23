@@ -1,4 +1,4 @@
-<div #scrollContainer class="h-34 bg-macsurface overflow-y-auto rounded-sm p-2">
+<div #scrollContainer class="h-34 overflow-y-auto rounded-sm bg-macsurface p-2">
   <div class="flex flex-col justify-start">
     <div>
       <pre> {{ log }}</pre>
@@ -17,13 +17,22 @@
         placeholder="comando"
       />
     </span>
-
-    <span> resultado: {{ items }} </span>
   </div>
-
-  <!-- @for (item of items; track item.id.channelId) { -->
-  <!--   <div>{{ item }}</div> -->
-  <!-- } @empty { -->
-  <!--   <div>No se encontraron resultados.</div> -->
-  <!-- } -->
 </div>
+
+@for (item of items; track item.id.channelId) {
+  <div class="result-box">
+    <div class="flex flex-row items-center gap-2">
+      <img
+        class="result-img"
+        [src]="item.snippet.thumbnails.medium.url"
+        [alt]="item.snippet.title"
+      />
+      <div>{{ item.snippet.channelTitle }}</div>
+    </div>
+    <div>Fecha de creación:</div>
+    <div>{{ item.snippet.publishedAt }}</div>
+  </div>
+} @empty {
+  <div>No se encontraron resultados.</div>
+}

@@ -8,3 +8,15 @@ input {
   font: inherit; /* Usa la fuente del contenedor */
   color: inherit; /* Usa el color del contenedor */
 }
+
+/* cuadros de respuesta   / */
+.result-box {
+  border: solid 1px #444;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 5px;
+}
+.result-img {
+  border-radius: 5px;
+  width: 30px;
+}
