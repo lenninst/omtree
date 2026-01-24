@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { YoutubeService } from '../../../services/service';
 import { YouTubeItem, YouTubeResponse } from '../../../core/models/youtube.model';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-omterminal',
@@ -11,8 +12,8 @@ import { YouTubeItem, YouTubeResponse } from '../../../core/models/youtube.model
 })
 export class OmterminalComponent {
   @ViewChild(`scrollContainer`) private scrollContainer!: ElementRef;
-  log = 'Mi terminal';
-  command: string = 'lenninst';
+  log: string[] = [];
+  command: string = ' ';
 
   // usar api
   items?: YouTubeItem[] = [];
@@ -35,18 +36,29 @@ export class OmterminalComponent {
     });
   }
   executeCommand(): void {
-    switch (this.command) {
+    const parts = this.command.split(' ');
+    const mainCommand = parts[0];
+    const args = parts.slice(1).join(' ');
+
+    switch (mainCommand) {
       case 'youtube':
-        this.youtubeScrapper();
+        if (args) {
+          this.youtubeScrapper(args);
+          // this.log.push(...('✔ ' + parts.join(' ')));
+          // this.log = [...this.log, parts.join(' ') + ' ✔ \n'];
+          this.addlog('✔ ' + parts.join(' '));
+        } else {
+          // this.log += '\n Ingresa un nombre de usuario de YouTube';
+        }
         break;
       case 'github':
         console.log('Navigating to GitHub...');
         break;
       case 'spotify':
-        this.youtubeScrapper();
+        // this.youtubeScrapper();
         break;
       case 'help':
-        this.log += '\n Available commands: youtube, github, spotify, help, clear';
+        this.log.push('\n Available commands: youtube, github, spotify, help, clear');
         break;
       case 'clear':
         this.clearLog();
@@ -57,17 +69,24 @@ export class OmterminalComponent {
     }
   }
 
+  addlog(message: string): void {
+    this.log = [...this.log, message + '\n'];
+  }
+  onEnter(): void {
+    this.executeCommand();
+    this.command = '';
+  }
   logfailed(): void {
-    this.log += '\n Command not found';
+    // this.log += '\n Command not found';
     this.command = '';
   }
 
   clearLog(): void {
-    this.log = '';
+    // this.log = '';
     this.command = '';
   }
-  youtubeScrapper(): void {
-    this.getYoutubeUser(this.command);
+  youtubeScrapper(args: string): void {
+    this.getYoutubeUser(args);
     console.log('YouTube scrapper function called');
   }
   ngAterViewChecked(): void {
