@@ -20,10 +20,6 @@ export class OmterminalComponent {
 
   constructor(private youtubeService: YoutubeService) {}
 
-  ngOnInit() {
-    this.getYoutubeUser(this.command);
-  }
-
   getYoutubeUser(command: string) {
     this.youtubeService.searchChannel(command).subscribe({
       next: (response) => {
@@ -44,11 +40,10 @@ export class OmterminalComponent {
       case 'youtube':
         if (args) {
           this.youtubeScrapper(args);
-          // this.log.push(...('✔ ' + parts.join(' ')));
-          // this.log = [...this.log, parts.join(' ') + ' ✔ \n'];
           this.addlog('✔ ' + parts.join(' '));
         } else {
           // this.log += '\n Ingresa un nombre de usuario de YouTube';
+          this.addlog('✘ Ingresa un nombre de usuario de YouTube');
         }
         break;
       case 'github':
@@ -78,12 +73,15 @@ export class OmterminalComponent {
   }
   logfailed(): void {
     // this.log += '\n Command not found';
+    this.addlog('✘ Comando no valido');
     this.command = '';
   }
 
   clearLog(): void {
     // this.log = '';
     this.command = '';
+    this.log = [];
+    ``;
   }
   youtubeScrapper(args: string): void {
     this.getYoutubeUser(args);

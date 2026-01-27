@@ -19,4 +19,5 @@ input {
 .result-img {
   border-radius: 5px;
   width: 30px;
+  background: #222;
 }

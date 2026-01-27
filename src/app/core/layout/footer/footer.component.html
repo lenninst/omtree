@@ -1,16 +1,11 @@
-
 <div class="mb-2 flex justify-center">
-
-<div class="bg-macsurface flex w-40 justify-center gap-4 rounded-lg">
-  @for (item of icons; track item.name) {
-
-  <a class="size-8 flex items-center justify-center rounded-sm border-white  p-2" [routerLink]="item.link">{{item.icon}}</a>
-
-  }
-
+  <div class="bg-macsurface flex w-40 justify-center gap-4 rounded-lg">
+    @for (item of icons; track item.name) {
+      <a
+        class="size-8 flex items-center justify-center rounded-sm border-white p-2"
+        [routerLink]="item.link"
+        >{{ item.icon }}</a
+      >
+    }
+  </div>
 </div>
-
-
-
-</div>
-
