@@ -47,6 +47,7 @@ export class OmterminalComponent {
         }
         break;
       case 'github':
+
         console.log('Navigating to GitHub...');
         break;
       case 'spotify':

@@ -10,6 +10,8 @@ export class YoutubeService {
   private apiKey = environment.apiKey;
   private apiUrl = 'https://www.googleapis.com/youtube/v3';
 
+  private githubApiUrl = 'https://api.github.com';
+
   constructor(private http: HttpClient) {}
 
   searchChannel(username: string): Observable<any> {
@@ -19,6 +21,11 @@ export class YoutubeService {
 
   getChannelDetails(channelId: string): Observable<any> {
     const url = `${this.apiUrl}/channels?part=snippet,statistics,contentDetails&id=${channelId}&key=${this.apiKey}`;
+    return this.http.get(url);
+  }
+
+  searchGithubUser(username: string): Observable<any> {
+    const url = `https://api.github.com/users/${username}`;
     return this.http.get(url);
   }
 }

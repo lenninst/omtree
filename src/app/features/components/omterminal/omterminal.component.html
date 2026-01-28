@@ -23,19 +23,22 @@
 @for (item of items; track item.id.channelId) {
   <div class="result-box">
     <div class="flex flex-row items-center gap-2">
-      <img class="result-img" [src]="item.snippet.thumbnails.medium.url" />
+      <img class="result-img" [src]="item.snippet.thumbnails.default.url" alt="  " />
 
       <div>{{ item.snippet.channelTitle }}</div>
+      <button type="button">  </button>
     </div>
-    <div>Fecha de creación:</div>
+
+    <div class="mt-2 flex flex-col gap-1">
+      <div class="subtitle text-violet-500">󰜝 Fecha de creación:</div>
       <div class="flex flex-col">
         <div>{{ item.snippet.publishTime }}</div>
-
-        <div>
-          {{ item.snippet.description }}
-        </div>
       </div>
-
+      <div class="subtitle text-teal-500"> Descripción:</div>
+      <div>
+        {{ item.snippet.description }}
+      </div>
+    </div>
   </div>
 } @empty {
   <div>No se encontraron resultados.</div>
