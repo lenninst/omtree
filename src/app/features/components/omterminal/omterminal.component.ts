@@ -2,7 +2,6 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { YoutubeService } from '../../../services/service';
 import { YouTubeItem, YouTubeResponse } from '../../../core/models/youtube.model';
-import { log } from 'node:console';
 
 @Component({
   selector: 'app-omterminal',
@@ -13,7 +12,7 @@ import { log } from 'node:console';
 export class OmterminalComponent {
   @ViewChild(`scrollContainer`) private scrollContainer!: ElementRef;
   log: string[] = [];
-  command: string = ' ';
+  command: string = '';
 
   // usar api
   items?: YouTubeItem[] = [];
@@ -47,7 +46,10 @@ export class OmterminalComponent {
         }
         break;
       case 'github':
-
+        if (args) {
+          this.githubDetails(args);
+          this.addlog('✔ ' + parts.join(' '));
+        }
         console.log('Navigating to GitHub...');
         break;
       case 'spotify':
@@ -76,6 +78,11 @@ export class OmterminalComponent {
     // this.log += '\n Command not found';
     this.addlog('✘ Comando no valido');
     this.command = '';
+  }
+
+  githubDetails(args: string): void {
+    // Lógica para manejar el comando de GitHub
+    console.log(`GitHub command executed with args: ${args}`);
   }
 
   clearLog(): void {
