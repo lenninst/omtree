@@ -1,7 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { GithubService, YoutubeService } from '../../../services/service';
+import { YoutubeService } from '../../../services/service';
 import { YouTubeItem, YouTubeResponse } from '../../../core/models/youtube.model';
+import { GithubService } from '../../../services/githubServices';
 
 @Component({
   selector: 'app-omterminal',
@@ -19,7 +20,7 @@ export class OmterminalComponent {
 
   constructor(
     private youtubeService: YoutubeService,
-    // private githubServices: GithubService,
+    private githubServices: GithubService,
   ) {}
 
   getYoutubeUser(command: string) {
@@ -34,16 +35,16 @@ export class OmterminalComponent {
     });
   }
 
-  // getGithubUser(command: string) {
-  //   this.githubServices.getUserDetails(command).subscribe({
-  //     next: (response) => {
-  //       console.log(response);
-  //     },
-  //     error: (error) => {
-  //       console.error('There was an error!', error);
-  //     },
-  //   });
-  // }
+  getGithubUser(command: string) {
+    this.githubServices.getUserDetails(command).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+    });
+  }
 
   executeCommand(): void {
     const parts = this.command.split(' ');
@@ -97,7 +98,7 @@ export class OmterminalComponent {
 
   githubDetails(args: string): void {
     // Lógica para manejar el comando de GitHub
-    // this.getGithubUser(args);
+    this.getGithubUser(args);
     console.log(`GitHub command executed with args: ${args}`);
   }
 

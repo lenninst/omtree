@@ -27,14 +27,3 @@ export class YoutubeService {
     return this.http.get(url);
   }
 }
-
-export class GithubService {
-  private apiUrl = 'https://api.github.com/users';
-
-  constructor(private http: HttpClient) {}
-
-  getUserDetails(username: string): Observable<any> {
-    const url = `${this.apiUrl}/${username}`;
-    return this.http.get(url);
-  }
-}
