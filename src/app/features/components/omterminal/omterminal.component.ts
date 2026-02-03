@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { YoutubeService } from '../../../services/service';
 import { YouTubeItem, YouTubeResponse } from '../../../core/models/youtube.model';
 import { GithubService } from '../../../services/githubServices';
+import { GithubUser } from '../../../core/models/github.model';
 
 @Component({
   selector: 'app-omterminal',
@@ -17,6 +18,7 @@ export class OmterminalComponent {
 
   // usar api
   items?: YouTubeItem[] = [];
+  itmesGithub?: GithubUser;
 
   constructor(
     private youtubeService: YoutubeService,
