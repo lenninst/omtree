@@ -18,7 +18,7 @@ export class OmterminalComponent {
 
   // usar api
   items?: YouTubeItem[] = [];
-  itmesGithub?: GithubUser;
+  itemsGithub?: GithubUser;
 
   constructor(
     private youtubeService: YoutubeService,
