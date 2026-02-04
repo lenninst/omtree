@@ -44,7 +44,53 @@
   <div>No se encontraron resultados.</div>
 }
 
-@if(itemsGithub) {
-  <div class="result-box"> hola bro </div>
-  }
+@if (itemsGithub) {
+  <div class="result-box">
+    <div class="flex flex-row items-center gap-2">
+      <img [src]="itemsGithub.avatar_url" alt="  " class="result-img" />
+      <div class="flex flex-col">
+        <div class="flex gap-1">
+          <span class="subtitle"></span>
+          <span class="subtitle"> Usuario: </span>
+        </div>
+        <a class="ml-3" href="{{ itemsGithub.html_url }}" target="_blank"
+          >{{ itemsGithub.login }}
+        </a>
+      </div>
+    </div>
 
+    <div>
+      <span>Nombre:</span>
+      {{ itemsGithub.name }}
+    </div>
+
+    <div>
+      <span>Seguidores:</span>
+      {{ itemsGithub.followers }}
+    </div>
+    <div>
+      <span>Seguidos:</span>
+      {{ itemsGithub.following }}
+    </div>
+    <div>
+      <span>Repositorios publicos:</span>
+      {{ itemsGithub.public_repos }}
+    </div>
+    <div>
+      <span>Seguidos:</span>
+      {{ itemsGithub.following }}
+    </div>
+
+    <div>
+      <span>:</span>
+      {{ itemsGithub.following }}
+    </div>
+
+
+    <div>
+      {{ itemsGithub.location }}
+    </div>
+  </div>
+} @else {
+  <div>No se encontraron resultados. github</div>
+}

@@ -24,4 +24,9 @@ input {
 
 .subtitle {
   font-weight: bold;
+  color: #f0c6c6;
+}
+
+span {
+  /* font-weight: bold; */
 }

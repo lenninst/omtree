@@ -41,6 +41,7 @@ export class OmterminalComponent {
     this.githubServices.getUserDetails(command).subscribe({
       next: (response) => {
         console.log(response);
+        this.itemsGithub = response;
       },
       error: (error) => {
         console.error('There was an error!', error);
