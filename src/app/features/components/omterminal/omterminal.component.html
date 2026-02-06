@@ -1,4 +1,4 @@
-<div #scrollContainer class="h-34 overflow-y-auto rounded-sm bg-macsurface p-2">
+<div #scrollContainer class="h-34 bg-macsurface overflow-y-auto rounded-sm p-2">
   <div class="flex flex-col justify-start">
     <div>
       <pre> {{ log }}</pre>
@@ -77,19 +77,35 @@
       {{ itemsGithub.public_repos }}
     </div>
     <div>
-      <span>Seguidos:</span>
-      {{ itemsGithub.following }}
+      <span>Gist publicos:</span>
+      {{ itemsGithub.public_gists }}
     </div>
 
     <div>
-      <span>:</span>
-      {{ itemsGithub.following }}
-    </div>
-
-
-    <div>
+      <span>Locacion:</span>
       {{ itemsGithub.location }}
     </div>
+
+    <div>
+      <span>Biografia:</span>
+      {{ itemsGithub.bio }}
+    </div>
+
+    <div>
+      <span>Blog:</span>
+      {{ itemsGithub.blog }}
+    </div>
+    <div>
+      <span>Fecha de creacion:</span>
+      {{ itemsGithub.created_at }}
+    </div>
+
+    <div>
+      <span>Ultima actividad:</span>
+      {{ itemsGithub.updated_at }}
+    </div>
+
+
   </div>
 } @else {
   <div>No se encontraron resultados. github</div>
