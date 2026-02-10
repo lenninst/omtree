@@ -1,4 +1,4 @@
-<div #scrollContainer class="h-34 overflow-y-auto rounded-sm bg-macsurface p-2">
+<div #scrollContainer class="h-34 bg-macsurface overflow-y-auto rounded-sm p-2">
   <div class="flex flex-col justify-start">
     <div>
       <pre> {{ log }}</pre>
@@ -43,6 +43,11 @@
 } @empty {
   <div>No se encontraron resultados.</div>
 }
+
+<div class="mt-4 flex flex-row gap-2">
+  <div class="infoBox">cuadro</div>
+  <div class="infoBox">cuadro</div>
+</div>
 
 @if (itemsGithub) {
   <div class="result-box">
@@ -104,8 +109,6 @@
       <span>Ultima actividad:</span>
       {{ itemsGithub.updated_at }}
     </div>
-
-
   </div>
 } @else {
   <!-- <div>No se encontraron resultados. github</div> -->

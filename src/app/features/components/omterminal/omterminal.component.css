@@ -30,3 +30,8 @@ input {
 span {
   /* font-weight: bold; */
 }
+
+.infoBox {
+  border: 1px dashed #f0c6c6;
+  border-radius: 5px;
+}
