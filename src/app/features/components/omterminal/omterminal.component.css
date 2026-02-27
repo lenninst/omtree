@@ -18,7 +18,7 @@ input {
 }
 .result-img {
   border-radius: 5px;
-  width: 30px;
+  width: 60px;
   background: #222;
 }
 
@@ -28,10 +28,11 @@ input {
 }
 
 span {
-  /* font-weight: bold; */
+  font-weight: bold;
 }
 
 .infoBox {
   border: 1px dashed #f0c6c6;
   border-radius: 5px;
+
 }
