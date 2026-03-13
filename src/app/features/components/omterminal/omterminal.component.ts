@@ -18,7 +18,7 @@ export class OmterminalComponent {
 
   // usar api
   items?: YouTubeItem[] = [];
-  itemsGithub?: GithubUser;
+  itemsGithub?: GithubUser | null = null;
 
   constructor(
     private youtubeService: YoutubeService,
@@ -49,6 +49,10 @@ export class OmterminalComponent {
     });
   }
 
+  clearResults(): void {
+    this.itemsGithub = null;
+    this.items = [];
+  }
   executeCommand(): void {
     const parts = this.command.split(' ');
     const mainCommand = parts[0];
@@ -59,6 +63,7 @@ export class OmterminalComponent {
         if (args) {
           this.youtubeScrapper(args);
           this.addlog('✔ ' + parts.join(' '));
+          this.clearResults();
         } else {
           // this.log += '\n Ingresa un nombre de usuario de YouTube';
           this.addlog('✘ Ingresa un nombre de usuario de YouTube');
@@ -68,6 +73,7 @@ export class OmterminalComponent {
         if (args) {
           this.githubDetails(args);
           this.addlog('✔ ' + parts.join(' '));
+          this.clearResults();
         }
         console.log('Navigating to GitHub...');
         break;
