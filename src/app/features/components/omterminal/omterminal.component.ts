@@ -40,7 +40,7 @@ export class OmterminalComponent {
   getGithubUser(command: string) {
     this.githubServices.getUserDetails(command).subscribe({
       next: (response) => {
-        console.log(response);
+        // console.log(response);
         this.itemsGithub = response;
       },
       error: (error) => {
@@ -61,27 +61,32 @@ export class OmterminalComponent {
     switch (mainCommand) {
       case 'youtube':
         if (args) {
+          this.clearResults();
+
           this.youtubeScrapper(args);
           this.addlog('✔ ' + parts.join(' '));
-          this.clearResults();
         } else {
-          // this.log += '\n Ingresa un nombre de usuario de YouTube';
           this.addlog('✘ Ingresa un nombre de usuario de YouTube');
         }
         break;
       case 'github':
         if (args) {
+          this.clearResults();
           this.githubDetails(args);
           this.addlog('✔ ' + parts.join(' '));
-          this.clearResults();
         }
         console.log('Navigating to GitHub...');
         break;
       case 'spotify':
-        // this.youtubeScrapper();
+        if (args) {
+          this.clearResults();
+          // this.youtubeScrapper();
+        } else {
+          this.addlog('✘ Ingresa otro nombre de artista');
+        }
         break;
       case 'help':
-        this.log.push('\n Available commands: youtube, github, spotify, help, clear');
+        this.addlog('Available commands: youtube, github, spotify, help, clear');
         break;
       case 'clear':
         this.clearLog();
