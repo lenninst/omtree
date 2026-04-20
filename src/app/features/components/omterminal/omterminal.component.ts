@@ -4,6 +4,7 @@ import { YoutubeService } from '../../../services/service';
 import { YouTubeItem, YouTubeResponse } from '../../../core/models/youtube.model';
 import { GithubService } from '../../../services/githubServices';
 import { GithubUser } from '../../../core/models/github.model';
+import { SpotifyServices } from '../../../services/spotifyServices';
 
 @Component({
   selector: 'app-omterminal',
@@ -23,6 +24,7 @@ export class OmterminalComponent {
   constructor(
     private youtubeService: YoutubeService,
     private githubServices: GithubService,
+    private spotifyService: SpotifyServices,
   ) {}
 
   getYoutubeUser(command: string) {
@@ -80,7 +82,7 @@ export class OmterminalComponent {
       case 'spotify':
         if (args) {
           this.clearResults();
-          // this.youtubeScrapper();
+          this.spotifySearch(args);
         } else {
           this.addlog('✘ Ingresa otro nombre de artista');
         }
@@ -116,6 +118,15 @@ export class OmterminalComponent {
     console.log(`GitHub command executed with args: ${args}`);
   }
 
+  spotifySearch(args: string): void {
+    this.spotifyService.searchArtist(args).subscribe({
+      next: (data) => {
+        console.log('Artistas encontrados:', data.artists.items);
+        // this.artistas = data.artists.items;
+      },
+      error: (err) => console.error('Error:', err),
+    });
+  }
   clearLog(): void {
     // this.log = '';
     this.command = '';
