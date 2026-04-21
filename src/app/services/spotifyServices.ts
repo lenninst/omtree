@@ -9,10 +9,10 @@ export class SpotifyServices {
   constructor(private http: HttpClient) {}
 
   searchArtist(name: string) {
-    const credencials = btoa(`${environment.spotifyClientId}: ${environment.spotifyClientSecret}`);
+    const credencials = btoa(`${environment.spotifyClientId}:${environment.spotifyClientSecret}`);
 
     const headers = new HttpHeaders({
-      Authorization: `Basic(${credencials})`,
+      Authorization: `Basic ${credencials}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     });
     // const body = new HttpParams().set('grant_type', 'client_credentials');
