@@ -1,4 +1,4 @@
-<div #scrollContainer class="h-34 bg-macsurface overflow-y-auto rounded-sm p-2">
+<div #scrollContainer class="h-34 overflow-y-auto rounded-sm bg-macsurface p-2">
   <div class="flex flex-col justify-start">
     <div>
       <pre> {{ log }}</pre>
@@ -102,6 +102,75 @@
               <div>
                 <span>Updated:</span>
                 {{ itemsGithub.updated_at }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div></div>
+}
+
+@if (itemsSpotify) {
+  <div>
+    demo spotify
+    <div class="mt-4 flex flex-row gap-2">
+      <div class="infoBox flex">
+        <div class="flex flex-col items-center justify-start border-r border-dashed p-2">
+          <div class="flex flex-col items-center justify-start">
+            <!-- <div class="mb-2 font-bold"> {{ itemsGithub.login }}</div> -->
+            <!-- <img [src]="itemsGithub.avatar_url" alt="  " class="result-img" /> -->
+            <div class="mt-2 text-[10px]">
+              <!-- {{ itemsGithub.name }} -->
+            </div>
+          </div>
+        </div>
+
+        <div class="">
+          <div class="border-b border-dashed p-2">
+            <span class="subtitle">Datos</span>
+            <div class="flex flex-col gap-1 text-[12px]">
+              <!-- <div><span>Locacion:</span> {{ itemsGithub.location }}</div> -->
+              <div>
+                <span>Artistas:</span>
+                <!-- {{  }} -->
+              </div>
+              <div>
+                <span>Blog:</span>
+                <!-- {{ itemsGithub.blog }} -->
+              </div>
+            </div>
+          </div>
+          <div class="p-2">
+            <span class="subtitle">Github</span>
+            <div class="flex flex-col gap-1 text-[12px]">
+              <div>
+                <span>Followers:</span>
+                <!-- {{ itemsGithub.followers }} -->
+              </div>
+              <div>
+                <span>Following:</span>
+                <!-- {{ itemsGithub.following }} -->
+              </div>
+              <div>
+                <span>Public repos:</span>
+                <!-- {{ itemsGithub.public_repos }} -->
+              </div>
+              <div>
+                <span>Public Gits:</span>
+                <!-- {{ itemsGithub.public_gists }} -->
+              </div>
+
+              <div>
+                <span>Created:</span>
+                <!-- {{ itemsGithub.created_at }} -->
+              </div>
+
+              <div>
+                <span>Updated:</span>
+                <!-- {{ itemsGithub.updated_at }} -->
               </div>
             </div>
           </div>

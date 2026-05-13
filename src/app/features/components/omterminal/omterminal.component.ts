@@ -5,6 +5,7 @@ import { YouTubeItem, YouTubeResponse } from '../../../core/models/youtube.model
 import { GithubService } from '../../../services/githubServices';
 import { GithubUser } from '../../../core/models/github.model';
 import { SpotifyServices } from '../../../services/spotifyServices';
+import { SpotifySearchResponse } from '../../../core/models/spotify.interface';
 
 @Component({
   selector: 'app-omterminal',
@@ -19,6 +20,8 @@ export class OmterminalComponent {
 
   // usar api
   items?: YouTubeItem[] = [];
+  itemsSpotify?: SpotifySearchResponse[] = [];
+
   itemsGithub?: GithubUser | null = null;
 
   constructor(
@@ -83,6 +86,7 @@ export class OmterminalComponent {
         if (args) {
           this.clearResults();
           this.spotifySearch(args);
+          this.addlog('✔ ' + parts.join(' '));
         } else {
           this.addlog('✘ Ingresa otro nombre de artista');
         }
@@ -121,7 +125,10 @@ export class OmterminalComponent {
   spotifySearch(args: string): void {
     this.spotifyService.searchArtist(args).subscribe({
       next: (data) => {
+        this.itemsSpotify = [data];
         console.log('Artistas encontrados:', data.artists.items);
+        console.log('Artistas arr>>:', this.itemsSpotify.map((a) => a.artists.items).flat());
+
         // this.artistas = data.artists.items;
       },
       error: (err) => console.error('Error:', err),
